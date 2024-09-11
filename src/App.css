@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    background-color: #FFF7ED;
+    padding: 25px 0px;
+}
+
+.nav--logo {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 1000;
+    margin-left: 40px;
+}
+
+nav > a {
+    color: #4D4D4D;
+    align-self: center;
+    text-decoration: none;
+    padding: 0 25px;
+}
+
+.nav--about {
+    margin-left: auto;
+}
+
+.nav--vans {
+    margin-right: 15px;
+}
+
+.home-container {
+    color: #ffffff;
+    padding: 60px 40px;
+    background-image: url("../src/assets/backgroundImg.png");
+}
+
+.home--heading {
+    margin-bottom: 20px;
+}
+
+.home--decription {
+    margin-bottom: 35px;
+}
+
+.findVanBtn {
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #ff8c38;
+    /* padding: 10px 37.8vw; */
+    padding: 10px 42.7%;
+}
+
+footer {
+    display: flex;
+    color: #aaaaaa;
+    background-color: #252525;
+    padding: 25px;
+    justify-content: center;
+}
