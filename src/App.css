@@ -1,26 +1,41 @@
 * {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 0;
     padding: 0;
 }
 
-nav {
+.vans-header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #FFF7ED;
-    padding: 25px 0px;
+    padding: 25px 20px;
+}
+
+.vans-header > a {
+    text-decoration: none;
 }
 
 .nav--logo {
     color: #000000;
     font-size: 20px;
     font-weight: 1000;
-    margin-left: 40px;
 }
 
 nav > a {
     color: #4D4D4D;
-    align-self: center;
     text-decoration: none;
-    padding: 0 25px;
+    margin-left: 30px;
+}
+
+.active {
+    font-weight: 550;
+    text-decoration: underline;
+}
+
+nav > a:hover {
+    font-weight: 550;
+    text-decoration: underline;
 }
 
 .nav--about {
@@ -33,7 +48,7 @@ nav > a {
 
 .home-container {
     color: #ffffff;
-    padding: 60px 40px;
+    padding: 60px 20px;
     background-image: url("../src/assets/backgroundImg.png");
 }
 
@@ -53,7 +68,6 @@ nav > a {
     border-radius: 5px;
     color: #ffffff;
     background-color: #ff8c38;
-    /* padding: 10px 37.8vw; */
     padding: 10px 0;
     width: 100%;
     font-weight: bold;
@@ -70,17 +84,17 @@ nav > a {
 .about--heading {
     color: #161616;
     font-weight: bold;
-    padding: 20px 40px;
+    padding: 20px 20px;
 }
 
 .about--description {
     color: #161616;
-    padding: 10px 40px;
+    padding: 10px 20px;
 }
 
 .about--explore {
     background-color: #FFCC8D;
-    margin: 35px 40px;
+    margin: 35px 20px;
     height: 130px;
     padding: 25px;
     border-radius: 5px;
@@ -99,6 +113,166 @@ nav > a {
     margin: 20px;
     background-color: #161616;
     font-weight: bold;
+}
+
+.vans-container {
+    padding-inline: 20px;
+    background-color: #FFF7ED;
+    padding-bottom: 25px;
+}
+.vans-container > h1 {
+    margin-bottom: 15px;
+}
+
+.filterBtn {
+    margin-right: 15px;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filterClearBtn {
+    border: none;
+    color: #4D4D4D;
+    margin-left: 20px;
+    text-decoration: underline;
+    background-color: initial;
+    cursor: pointer;
+}
+
+.van-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.van-tile {
+    cursor: pointer;
+}
+
+.van-tile > img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.van-type {
+    height: 35px;
+    padding: 6px 20px;
+    background-color: #ffead0;
+    font-style: normal;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    color: #4d4d4d;
+    text-transform: capitalize;
+    transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.van-type:hover {
+    color: #ffead0;
+}
+
+.van-type:focus {
+    outline: none;
+}
+
+.van-type.selected {
+    color: #ffead0;
+}
+
+.van-type.simple:hover, .van-type.simple.selected {
+    background-color: #E17654;
+}
+
+.van-type.rugged:hover, .van-type.rugged.selected {
+    background-color: #115E59;
+}
+
+.van-type.luxury:hover, .van-type.luxury.selected {
+    background-color: #161616;
+}
+
+.van-info > p {
+    font-weight: bold;
+}
+
+p > span {
+    display: flex;
+    font-weight: normal;
+}
+
+i[class*='van-type'] {
+    padding: 5px 15px;
+}
+
+.vans--list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.vans--list > a {
+    all: initial;
+}
+
+.vanDetail-container {
+    background-color: #FFF7ED;
+    padding: 20px;
+}
+
+.back {
+    border: none;
+    text-decoration: none;
+    color: #858585;
+    cursor: pointer;
+}
+
+.back > span {
+    color: #201F1D;
+    text-decoration: underline;
+}
+
+.vanDetail--vanImg {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+
+.vanDetail-container > h2 {
+    color: #161616;
+    font-weight: bold;
+    margin: 20px 0 15px 0;
+}
+
+.vanDetail-container > h4 {
+    margin-bottom: 15px;
+}
+
+h4 > span {
+    font-weight: 500;
+}
+
+.vanDetail-container > p {
+    color: #161616;
+    margin-bottom: 20px;
+}
+
+.rentBtn {
+    display: block;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #ff8c38;
+    padding: 10px 0;
+    width: 100%;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 footer {

@@ -11,7 +11,7 @@ export default function About() {
         <p className="about--description">Our team is full of vanlife enthusiasts who know firsthand the magic of touring the world on 4 wheels.</p>
         <div className="about--explore">
             <h3 className="explore--heading">Your destination is waiting. Your van is ready.</h3>
-            <Link className="exploreVansBtn">Explore our vans</Link>
+            <Link to={"/vans"} className="exploreVansBtn">Explore our vans</Link>
         </div>
     </div>
   )
