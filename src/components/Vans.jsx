@@ -6,7 +6,7 @@ export default function Vans() {
     const [simpleFilter, setSimpleFilter] = useState(false)
     const [ruggedFilter, setRuggedFilter] = useState(false)
     const [luxuryFilter, setLuxuryFilter] = useState(false)
-    
+
     function selectFilter(set) {
         set(prevState => !prevState)
     }
@@ -64,7 +64,7 @@ export default function Vans() {
                 return vanTile
             } else if (luxuryFilter && van.type === "luxury") {
                 return vanTile
-            } else if(!simpleFilter && !ruggedFilter && !luxuryFilter){
+            } else if (!simpleFilter && !ruggedFilter && !luxuryFilter) {
                 return vanTile
             }
         }
