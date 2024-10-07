@@ -14,7 +14,7 @@ export default function Vans() {
 
   const hostVanEls = vans.map((van) => {
     const vanList = van.hostId == "123" ? (
-      <Link to={`/host/vans/${van.id}`} key={van.id} className="host-van--link">
+      <Link to={van.id} key={van.id} className="host-van--link">
         <div className="list-van">
           <img src={van.imageUrl} alt={van.name} width={80} />
           <div className="list--van-details">
@@ -30,7 +30,7 @@ export default function Vans() {
   return (
     <div className="host-vans-container">
       <h1 className="van-list-heading">Your listed vans</h1>
-      { vans.length > 0 ? hostVanEls : <h1>...loading</h1> }
+      { vans.length > 0 ? hostVanEls : <div className="loader"></div> }
     </div>
   );
 }

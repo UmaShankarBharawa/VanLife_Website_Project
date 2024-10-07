@@ -1,37 +1,7 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export default function Vans() {
-
-    const [simpleFilter, setSimpleFilter] = useState(false)
-    const [ruggedFilter, setRuggedFilter] = useState(false)
-    const [luxuryFilter, setLuxuryFilter] = useState(false)
-
-    function selectFilter(set) {
-        set(prevState => !prevState)
-    }
-
-    const simpleStyles = {
-        backgroundColor: simpleFilter ? "#E17654" : "#ffead0",
-        color: simpleFilter ? "#ffead0" : "#4D4D4D"
-    }
-
-
-    const ruggedStyles = {
-        backgroundColor: ruggedFilter ? "#115E59" : "#ffead0",
-        color: ruggedFilter ? "#ffead0" : "#4D4D4D"
-    }
-
-    const luxuryStyles = {
-        backgroundColor: luxuryFilter ? "#161616" : "#ffead0",
-        color: luxuryFilter ? "#ffead0" : "#4D4D4D"
-    }
-
-    function clearFilter() {
-        setSimpleFilter(false)
-        setRuggedFilter(false)
-        setLuxuryFilter(false)
-    }
 
     const [vans, setVans] = useState([]);
     console.log(vans)
@@ -43,10 +13,23 @@ export default function Vans() {
             })
     }, [])
 
+    const [searchParams, setSearchParams] = useSearchParams()
 
-    const vanElements = vans.map((van) => {
+    const typeFilter = searchParams.get("type")
+    console.log(typeFilter)
+
+    const displayedVans = typeFilter ? vans.filter(van => van.type === typeFilter) : vans
+
+    const vanElements = displayedVans.map((van) => {
         const vanTile = (
-            <Link to={`/vans/${van.id}`} key={van.id}>
+            <Link
+                to={van.id}
+                key={van.id}
+                state={{
+                    search: `?${searchParams.toString()}`,
+                    type: typeFilter
+                }}
+            >
                 <div className="van-tile">
                     <img src={van.imageUrl} alt={van.name} width={300} />
                     <div className="van-info">
@@ -57,30 +40,54 @@ export default function Vans() {
                 </div>
             </Link>
         )
-        {
-            if (simpleFilter && van.type === "simple") {
-                return vanTile
-            } else if (ruggedFilter && van.type === "rugged") {
-                return vanTile
-            } else if (luxuryFilter && van.type === "luxury") {
-                return vanTile
-            } else if (!simpleFilter && !ruggedFilter && !luxuryFilter) {
-                return vanTile
-            }
-        }
-
+        return vanTile
     })
+
+
+    function handleFilterChange(key, value) {
+        setSearchParams(prevParams => {
+            if (value === null) {
+                prevParams.delete(key)
+            } else {
+                prevParams.set(key, value)
+            }
+            return prevParams
+        })
+    }
+
 
     return (
         <div className="vans-container">
             <h1>Explore our van options</h1>
-            <button onClick={() => selectFilter(setSimpleFilter)} style={simpleStyles} className="filterBtn filterSimpleBtn">Simple</button>
-            <button onClick={() => selectFilter(setRuggedFilter)} style={ruggedStyles} className="filterBtn filterRuggedBtn">Rugged</button>
-            <button onClick={() => selectFilter(setLuxuryFilter)} style={luxuryStyles} className="filterBtn filterLuxuryBtn">Luxury</button>
-            <button onClick={clearFilter} className="filterClearBtn">Clear filters</button>
-            <div className="vans--list">
+            <button
+                onClick={() => handleFilterChange("type", "simple")}
+                className={`filter-btn filterSimpleBtn ${typeFilter === "simple" ? "selected" : ""}`}
+            >
+                Simple
+            </button>
+            <button
+                onClick={() => handleFilterChange("type", "rugged")}
+                className={`filter-btn filterRuggedBtn ${typeFilter === "rugged" ? "selected" : ""}`}
+            >
+                Rugged
+            </button>
+            <button
+                onClick={() => handleFilterChange("type", "luxury")}
+                className={`filter-btn filterLuxuryBtn ${typeFilter === "luxury" ? "selected" : ""}`}
+            >
+                Luxury
+            </button>
+            {typeFilter ?
+                (<button
+                    onClick={() => handleFilterChange("type", null)}
+                    className="filter-clear-btn"
+                >
+                    Clear filters
+                </button>) : null
+            }
+            {vans.length > 0 ? <div className="vans--list">
                 {vanElements}
-            </div>
+            </div> : <div className="loader"></div>}
         </div>
     )
 }
