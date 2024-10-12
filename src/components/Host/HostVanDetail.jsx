@@ -5,7 +5,6 @@ export default function HostVanDetail() {
 
   const params = useParams()
   const [van, setVan] = useState(null)
-  console.log(van)
 
   useEffect(() => {
     fetch(`/api/vans/${params.id}`)

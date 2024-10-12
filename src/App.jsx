@@ -1,8 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
 import About from "./components/About";
-import Vans from "./components/Vans";
+import Vans, { loader as vansLoader } from "./components/Vans";
 import VanDetail from "./components/VanDetail";
 import Layout from "./components/Layout";
 import Dashboard from "./components/Host/Dashboard";
@@ -15,18 +15,19 @@ import HostVanInfo from "./components/Host/HostVanInfo"
 import HostVanPricing from "./components/Host/HostVanPricing"
 import HostVanPhotos from "./components/Host/HostVanPhotos"
 import NotFound from "./components/NotFound";
-
+import Error from './components/Error'
+import Login from "./components/Login";
 
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
+
+  const router = createBrowserRouter(createRoutesFromElements(
         <Route path="/" element={<Layout />} >
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="vans" element={<Vans />} />
+          <Route path="vans" element={<Vans />} errorElement={<Error />} loader={vansLoader} />
           <Route path="vans/:id" element={<VanDetail />} />
+          <Route path="login" element={<Login />} />
 
           <Route path="host" element={<HostLayout />}>
             <Route index element={<Dashboard />} />
@@ -42,8 +43,10 @@ function App() {
           </Route>
           <Route path="*" element={<NotFound />} />
         </Route>
-      </Routes>
-    </BrowserRouter>
+  ))
+
+  return (
+    <RouterProvider router={router} />
   )
 }
 

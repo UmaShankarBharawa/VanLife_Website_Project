@@ -1,22 +1,20 @@
-import { useEffect, useState } from "react"
-import { Link, useSearchParams } from "react-router-dom";
+import { useState } from "react"
+import { Link, useSearchParams, useLoaderData } from "react-router-dom";
+import { getVans } from "../api";
+
+export function loader() {
+    return getVans()
+}
 
 export default function Vans() {
 
-    const [vans, setVans] = useState([]);
-    console.log(vans)
-    useEffect(() => {
-        fetch("/api/vans")
-            .then(response => response.json())
-            .then(data => {
-                setVans(data.vans)
-            })
-    }, [])
-
     const [searchParams, setSearchParams] = useSearchParams()
+    const [error, setError] = useState(null)
+
+    const vans = useLoaderData()
+
 
     const typeFilter = searchParams.get("type")
-    console.log(typeFilter)
 
     const displayedVans = typeFilter ? vans.filter(van => van.type === typeFilter) : vans
 
@@ -55,6 +53,9 @@ export default function Vans() {
         })
     }
 
+    if (error) {
+        return  <h1 className="error">There was an error: {error.message}</h1>
+    }
 
     return (
         <div className="vans-container">
@@ -85,9 +86,9 @@ export default function Vans() {
                     Clear filters
                 </button>) : null
             }
-            {vans.length > 0 ? <div className="vans--list">
+            <div className="vans--list">
                 {vanElements}
-            </div> : <div className="loader"></div>}
+            </div>
         </div>
     )
 }
