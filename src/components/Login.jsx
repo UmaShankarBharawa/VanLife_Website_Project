@@ -1,5 +1,10 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
+import { loginUser } from "../api"
+
+export function loader({ request }) {
+    return new URL(request.url).searchParams.get("message")
+}
 
 export default function Login() {
 
@@ -7,23 +12,41 @@ export default function Login() {
         email: "",
         password: ""
     })
+    const [status, setStatus] = useState("idle")
+    const [error, setError] = useState(null)
+    const message = useLoaderData()
+
+
+    // const [loginData, setLoginData] = useState()
+    // console.log(loginData.user)
+
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        setStatus("submitting")
+        setError(null)
+        loginUser(formData)
+            .then(data => console.log(data))
+            .catch(err=> setError(err))
+            .finally(()=> setStatus("idle"))
+    }
 
     function handleChange(e) {
-        const {name, value} = e.target
+        const { name, value } = e.target
         e.preventDefault()
         setFormData(prevState => ({
             ...prevState,
             [name]: value
         }))
-        console.log(e.target.name)
+        // console.log(e.target.value)
     }
-    // console.log("User:", formData.email)
-    // console.log("Password:", formData.password)
 
     return (
         <div className="login-container">
             <h1>Sign in to your account</h1>
-            <form className="login--form">
+            {message && <h3 className="red">{message}</h3>}
+            {error && <h3 className="red">{error.message}</h3>}
+            <form onSubmit={handleSubmit} className="login--form">
                 <input
                     name="email"
                     type="email"
@@ -42,7 +65,9 @@ export default function Login() {
                     className="password"
                     required
                 />
-                <button className="login-btn">Sign In</button>
+                <button disabled={status === "submitting"} className="login-btn">
+                    {status === "submitting" ? "Signing In..." : "Sign In"}
+                </button>
             </form>
             <p>Don't have an account? <Link className="create-account">Create one now</Link></p>
         </div>
