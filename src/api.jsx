@@ -25,14 +25,14 @@ export async function getHostVans(id) {
         }
     }
     const data = await res.json()
-    return id ? data.vans[0] : data.vans
+    return data.vans
 }
 
 export async function loginUser(creds) {
     const res = await fetch("/api/login",
         { method: "post", body: JSON.stringify(creds) }
     )
-    const data = res.json()
+    const data = await res.json()
 
     if(!res.ok) {
         throw {

@@ -22,7 +22,7 @@ export function makeServer() {
             this.namespace = "api"
             this.logging = false
 
-            this.get("/vans", (schema, request) => {
+            this.get("/vans", (schema) => {
                 // return new Response(400, {}, {error: "Error fetching data"})
                 return schema.vans.all()
             })
@@ -32,7 +32,7 @@ export function makeServer() {
                 return schema.vans.find(id)
             })
 
-            this.get("/host/vans", (scheme, request) => {
+            this.get("/host/vans", (scheme) => {
                 return scheme.vans.where({ hostId: "123" })
             })
 

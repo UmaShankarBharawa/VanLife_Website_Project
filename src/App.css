@@ -111,6 +111,10 @@
     margin-top: 10px;
     cursor: pointer;
 }
+.login-btn:disabled {
+    background-color: #aaaaaa;
+    cursor: not-allowed;
+}
 
 .login-container > p {
     color: #161616;
