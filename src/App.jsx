@@ -5,7 +5,7 @@ import About from "./components/About";
 import Vans, { loader as vansLoader } from "./components/Vans";
 import VanDetail, { loader as vanDetailLoader } from "./components/VanDetail";
 import Layout from "./components/Layout";
-import Dashboard from "./components/Host/Dashboard";
+import Dashboard, { loader as dashboardLoader } from "./components/Host/Dashboard";
 import Income from "./components/Host/Income";
 import Reviews from "./components/Host/Reviews";
 import HostLayout from "./components/HostLayout";
@@ -52,10 +52,7 @@ function App() {
         <Route
           index
           element={<Dashboard />}
-          loader={async ({ request }) => {
-            await requireAuth(request)
-            return null
-          }}
+          loader={dashboardLoader}
         />
         <Route
           path="income"

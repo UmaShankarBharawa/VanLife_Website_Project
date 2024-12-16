@@ -424,6 +424,200 @@ h4>span {
     text-decoration: underline;
 }
 
+.dashboard-container {
+    background-color: #fff7ed;
+    padding: 20px 0;
+}
+
+.dashboard--welcome {
+    display: grid;
+    padding: 20px;
+    grid-template-rows: 3fr 1fr;
+    background-color: #FFEAD0;
+}
+
+.welcome--details:nth-child(1) {
+    color: #161616;
+    font-weight: bold;
+    grid-column: 1;
+    margin-bottom: 0;
+}
+.welcome--details:nth-child(2) {
+    color: #4D4D4D;
+    grid-column: 1;
+    margin-bottom: 5px;
+
+}
+.welcome--details:nth-child(3) {
+    color: #161616;
+    font-weight: 800;
+    grid-column: 1;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.welcome--details:nth-child(4) {
+    color: #161616;
+    text-decoration: none;
+    font-weight: normal;
+    grid-column: 2;
+    justify-self: right;
+}
+
+.dashboard--review {
+    display: flex;
+    padding: 20px;
+    background-color: #FFDDB2;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review--details {
+    color: #161616;
+}
+.dashboard--review > a {
+    color: #161616;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+
+.dashboard-vans--div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard-van {
+    color: #161616;
+}
+
+.dashboard-list-van {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin: 20px;
+    align-items: center;
+    padding: 10px;
+}
+.dashboard-list-van>img {
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.dashboard-list--van-details>h4 {
+    color: #4d4d4d;
+    margin-top: 5px;
+}
+
+.dashboard-list--link {
+    position:absolute;
+    right: 45px;
+    text-decoration: none;
+    color: #161616;
+}
+
+.dashboard-vans--heading {
+    color: #161616;
+    font-weight: bold;
+    margin: 30px 20px 10px;
+}
+
+.dashboard--view-all {
+    color: #161616;
+    text-decoration: none;
+    margin: 30px 20px 10px;
+}
+
+.reviews-container {
+    color: #161616;
+    background-color: #fff7ed;
+    padding: 20px;
+}
+
+.reviews--heading {
+    margin: 15px 0;
+    margin-right: 20px;
+    float: left;
+}
+
+.reviews--days {
+    color: #4D4D4D;
+    font-weight: normal;
+    margin: 22px;
+}
+.reviews--days > span {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.reviews--reviews {
+    margin: 15px 0;
+}
+
+.reviews--name {
+    margin: 0 0 5px 0;
+}
+.reviews--name > span {
+    color: #8c8c8c;
+}
+
+.reviews--hr {
+    margin: 30px 0 20px 0;
+}
+
+.income-container {
+    color: #161616;
+    background-color: #fff7ed;
+    padding: 20px;
+}
+
+.income--days {
+    color: #4d4d4d;
+    font-weight: normal;
+    margin: 15px 0;
+}
+.income--days > span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.income--price {
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
+.income--transaction {
+    display: flex;
+    justify-content: space-between;
+    color: #161616;
+    margin: 20px 0;
+}
+
+.transaction--days {
+    color: #4d4d4d;
+    font-weight: normal;
+    align-self: center;
+}
+.transaction--days > span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.income--pricing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 25px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+.income--pricing > h4 {
+    color: #4d4d4d;
+    font-weight: normal;
+}
+
+
 .host-vans-container {
     background-color: #fff7ed;
     padding-bottom: 20px;

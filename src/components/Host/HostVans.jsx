@@ -15,7 +15,7 @@ export default function Vans() {
 
   function renderVanElements(vans) {
     const hostVanEls = vans.map((van) => {
-      const vanList = van.hostId == "123" ? (
+      const vanList = (
         <Link to={van.id} key={van.id} className="host-van--link">
           <div className="list-van">
             <img src={van.imageUrl} alt={van.name} width={80} />
@@ -25,7 +25,7 @@ export default function Vans() {
             </div>
           </div>
         </Link>
-      ) : null;
+      )
       return vanList;
     });
     return (
@@ -39,7 +39,7 @@ export default function Vans() {
 
   return (
     <div className="host-vans-container">
-      <h1 className="van-list-heading">Your listed vans</h1>
+      <h2 className="van-list-heading">Your listed vans</h2>
       <Suspense fallback={<h1 className="loader"></h1>}>
         <Await resolve={dataPromise.vans}>
           {renderVanElements}
